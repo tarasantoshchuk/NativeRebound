@@ -1,9 +1,9 @@
-package com.tarasantoshchuk.nativerebound;
+package com.tarasantoshchuk.native_rebound;
 
 import android.animation.TimeInterpolator;
 
 public class NativeReboundInterpolator implements TimeInterpolator {
-    private static final int AMPLITUDE_DECREASE = 1000;
+    private static final int AMPLITUDE_DECREASE = 100;
 
     private double mNaturalFrequency;
     private double mDampedFrequency;
@@ -15,6 +15,8 @@ public class NativeReboundInterpolator implements TimeInterpolator {
 
     private double mA;
     private double mB;
+
+    private double mAmplitudeError;
 
     public NativeReboundInterpolator(float tension, float friction) {
         mNaturalFrequency = Math.sqrt(tension);
@@ -29,6 +31,8 @@ public class NativeReboundInterpolator implements TimeInterpolator {
 
         mA = -1;
         mB = (- mDampFactor) / mDampedFrequency;
+
+        mAmplitudeError = getRawInterpolation(mNaturalDuration) - 1f;
     }
 
     public long getNaturalDuration() {
@@ -40,10 +44,14 @@ public class NativeReboundInterpolator implements TimeInterpolator {
         if (mDampingRatio < 1f) {
             double t = v * mNaturalDuration;
 
-            return 1f + (float) ((mA * Math.cos(mDampedFrequency * t) + mB * Math.sin(mDampedFrequency * t)) * Math.exp(- mDampFactor * t));
+            return (float) (getRawInterpolation(t) - mAmplitudeError * v);
         } else {
             /** no need to support critical damp and overdamped cases */
             return v;
         }
+    }
+
+    private double getRawInterpolation(double t) {
+        return 1.0 + ((mA * Math.cos(mDampedFrequency * t) + mB * Math.sin(mDampedFrequency * t)) * Math.exp(- mDampFactor * t));
     }
 }

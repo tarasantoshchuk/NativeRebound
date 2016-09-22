@@ -1,12 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tarasantoshchuk.nativerebound">
+    package="com.tarasantoshchuk.native_rebound.sample">
 
-    <application android:allowBackup="true"
+    <application
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
+        android:allowBackup="false"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.tarasantoshchuk.native_rebound.sample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
