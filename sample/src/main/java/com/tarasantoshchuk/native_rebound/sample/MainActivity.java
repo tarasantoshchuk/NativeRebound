@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.Toast;
 
 import com.facebook.rebound.SimpleSpringListener;
@@ -16,6 +17,8 @@ import com.tarasantoshchuk.native_rebound.sample.databinding.ActivityMainBinding
 public class MainActivity extends Activity {
     private ActivityMainBinding mBinding;
     private boolean isAnimated = false;
+    private ViewPropertyAnimator mAnimation;
+    private Spring mSpring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 if (isAnimated) {
                     mBinding.animationControl.setText(R.string.start_animation);
+                    mAnimation.cancel();
+                    mSpring.destroy();
                     mBinding.bouncingView.setTranslationY(0);
                     mBinding.springBouncingView.setTranslationY(0);
                     isAnimated = false;
@@ -49,7 +54,7 @@ public class MainActivity extends Activity {
 
     private void startNativeAnimation(int translation, int friction, int tension) {
         NativeReboundInterpolator interpolator = new NativeReboundInterpolator(tension, friction);
-        mBinding.bouncingView
+        mAnimation = mBinding.bouncingView
                 .animate()
                 .setDuration(interpolator.getNaturalDuration())
                 .translationY(translation)
@@ -74,15 +79,15 @@ public class MainActivity extends Activity {
                     public void onAnimationRepeat(Animator animator) {
 
                     }
-                })
-                .start();
+                });
+        mAnimation.start();
     }
 
     private void startSpringAnimation(final int translation, int friction, int tension) {
         SpringSystem system = SpringSystem.create();
-        Spring spring = system.createSpring();
-        spring.setSpringConfig(new SpringConfig(tension, friction));
-        spring.addListener(new SimpleSpringListener() {
+        mSpring = system.createSpring();
+        mSpring.setSpringConfig(new SpringConfig(tension, friction));
+        mSpring.addListener(new SimpleSpringListener() {
             @Override
             public void onSpringUpdate(Spring spring) {
                 double value = spring.getCurrentValue();
@@ -90,6 +95,6 @@ public class MainActivity extends Activity {
                 mBinding.springBouncingView.setTranslationY((float) (value * translation));
             }
         });
-        spring.setEndValue(1);
+        mSpring.setEndValue(1);
     }
 }
