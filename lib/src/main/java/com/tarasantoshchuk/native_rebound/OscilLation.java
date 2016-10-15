@@ -4,7 +4,7 @@ class Oscillation implements Trajectory {
     private final Trajectory mTrajectory;
     private final double mNaturalDuration;
 
-    public Oscillation(Trajectory trajectory, double duration) {
+    Oscillation(Trajectory trajectory, double duration) {
         mTrajectory = trajectory;
         mNaturalDuration = duration;
     }

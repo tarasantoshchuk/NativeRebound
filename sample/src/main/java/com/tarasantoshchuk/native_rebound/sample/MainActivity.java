@@ -39,8 +39,8 @@ public class MainActivity extends Activity {
                 } else {
                     mBinding.animationControl.setText(R.string.reset);
 
-                    int friction = Integer.valueOf(mBinding.frictionEt.getText().toString());
-                    int tension = Integer.valueOf(mBinding.tensionEt.getText().toString());
+                    float friction = Float.valueOf(mBinding.frictionEt.getText().toString());
+                    float tension = Float.valueOf(mBinding.tensionEt.getText().toString());
 
                     int translation = mBinding.tensionEt.getTop() / 2;
 
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void startNativeAnimation(int translation, int friction, int tension) {
+    private void startNativeAnimation(int translation, float friction, float tension) {
         NativeReboundInterpolator interpolator = new NativeReboundInterpolator(tension, friction);
         mAnimation = mBinding.bouncingView
                 .animate()
@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
         mAnimation.start();
     }
 
-    private void startSpringAnimation(final int translation, int friction, int tension) {
+    private void startSpringAnimation(final int translation, float friction, float tension) {
         SpringSystem system = SpringSystem.create();
         mSpring = system.createSpring();
         mSpring.setSpringConfig(new SpringConfig(tension, friction));

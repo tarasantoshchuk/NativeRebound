@@ -3,7 +3,7 @@ package com.tarasantoshchuk.native_rebound;
 import android.animation.TimeInterpolator;
 
 public class NativeReboundInterpolator implements TimeInterpolator {
-    private static final int AMPLITUDE_DECREASE = 20;
+    private static final int AMPLITUDE_DECREASE = 1000;
 
     private Oscillation mOscillation;
 
@@ -12,7 +12,7 @@ public class NativeReboundInterpolator implements TimeInterpolator {
     }
 
     public long getNaturalDuration() {
-        return (long) mOscillation.getNaturalDuration() * 1000;
+        return (long) (mOscillation.getNaturalDuration() * 1000);
     }
 
     @Override

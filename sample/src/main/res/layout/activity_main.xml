@@ -8,19 +8,25 @@
         android:id="@+id/constraintLayout3">
 
 
-        <View
+        <TextView
             android:id="@+id/bouncing_view"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:background="#f00"
+            android:gravity="center"
+            android:text="lib"
+            android:textColor="#fff"
             app:layout_constraintLeft_toLeftOf="@+id/constraintLayout3"
             app:layout_constraintTop_toTopOf="@+id/constraintLayout3" />
 
-        <View
+        <TextView
             android:id="@+id/spring_bouncing_view"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:background="#00f"
+            android:text="fb"
+            android:textColor="#fff"
+            android:gravity="center"
             app:layout_constraintLeft_toRightOf="@+id/bouncing_view"
             app:layout_constraintTop_toTopOf="@+id/bouncing_view" />
 
@@ -28,7 +34,7 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="numberSigned"
+            android:inputType="numberDecimal"
             android:ems="10"
             android:hint="@string/tension"
             android:id="@+id/tension_et"
@@ -39,7 +45,7 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:hint="@string/friction"
             android:ems="10"
             android:id="@+id/friction_et"

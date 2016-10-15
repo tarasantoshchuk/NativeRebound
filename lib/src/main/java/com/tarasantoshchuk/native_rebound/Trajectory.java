@@ -5,7 +5,8 @@ interface Trajectory {
 }
 
 interface TrajectoryProvider {
-    Trajectory getTrajectory(double dampFactor, double dampedFrequency);
+    Trajectory getTrajectory(double naturalFrequency, double dampFactor, double dampedFrequency);
+    double getRelaxationCoefficient(double dampFactor, double dampedFrequency);
 }
 
 
