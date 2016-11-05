@@ -1,4 +1,4 @@
-package com.tarasantoshchuk.native_rebound;
+package com.github.tarasantoshchuk.native_rebound;
 
 class PhysicsUtils {
     static Oscillation getOscillation(double friction, double tension, final double amplitudeDecrease) {

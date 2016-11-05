@@ -1,4 +1,4 @@
-package com.tarasantoshchuk.native_rebound;
+package com.github.tarasantoshchuk.native_rebound;
 
 enum OscillationType implements TrajectoryProvider {
     UNDERDAMPING {

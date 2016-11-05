@@ -1,4 +1,5 @@
-package com.tarasantoshchuk.native_rebound.sample;
+package com.github.tarasantoshchuk.native_rebound.sample;
+
 import android.animation.Animator;
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -11,8 +12,8 @@ import com.facebook.rebound.SimpleSpringListener;
 import com.facebook.rebound.Spring;
 import com.facebook.rebound.SpringConfig;
 import com.facebook.rebound.SpringSystem;
-import com.tarasantoshchuk.native_rebound.NativeReboundInterpolator;
-import com.tarasantoshchuk.native_rebound.sample.databinding.ActivityMainBinding;
+import com.github.tarasantoshchuk.native_rebound.NativeReboundInterpolator;
+import com.github.tarasantoshchuk.native_rebound.sample.databinding.ActivityMainBinding;
 
 public class MainActivity extends Activity {
     private ActivityMainBinding mBinding;

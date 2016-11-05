@@ -1,4 +1,4 @@
-package com.tarasantoshchuk.native_rebound;
+package com.github.tarasantoshchuk.native_rebound;
 
 interface Trajectory {
     double getPositionAtTime(double time);

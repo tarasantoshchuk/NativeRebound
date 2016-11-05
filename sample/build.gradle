@@ -4,7 +4,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
     defaultConfig {
-        applicationId "com.tarasantoshchuk.native_rebound_sample"
+        applicationId "com.github.tarasantoshchuk.native_rebound_sample"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
