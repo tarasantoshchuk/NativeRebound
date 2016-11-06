@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'Android'
+    bintrayName = 'native-rebound'
+
+    publishedGroupId = 'com.github.tarasantoshchuk.native_rebound'
+    libraryName = 'NativeRebound'
+    artifact = 'native-rebound'
+
+    libraryDescription = 'Implementation of rebound animations in terms of android.animation.Animator'
+
+    siteUrl = 'https://github.com/tarasantoshchuk/NativeRebound'
+    gitUrl = 'https://github.com/tarasantoshchuk/NativeRebound.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'tarasantoshchuk'
+    developerName = 'Taras Antoshchuk'
+    developerEmail = 't.antoshchuk@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
@@ -8,7 +32,7 @@ android {
         minSdkVersion 11
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0"
+        versionName "0.1"
     }
 
     buildTypes {
@@ -18,3 +42,6 @@ android {
         }
     }
 }
+
+apply from: 'https://raw.githubusercontent.com/danylovolokh/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/danylovolokh/JCenter/master/bintrayv1.gradle'
